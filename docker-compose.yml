@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - node-network    
+
+  note-app:
+    build:
+      context: "./"
+      dockerfile: Dockerfile
+    container_name: "note-app"
+    ports:
+      - "2000:2000" 
+    environment:
+      - PORT=2000
+      - DB_URL=mongodb://mongo:27017/note_db
+    depends_on:
+      - mongo
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules  
+    networks:
+      - node-network
+
+networks:
+  node-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
