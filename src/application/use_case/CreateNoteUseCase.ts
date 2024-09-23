@@ -1,6 +1,6 @@
 import { plainToClass } from "class-transformer";
 import { Note, NoteStatus } from "../../domain/entity/Note";
-import { INoteRepository } from "../../domain/entity/repository/INoteRepsitory";
+import { INoteRepository } from "../../domain/repository/INoteRepsitory";
 import { CreateNoteDTO } from "../dto/CreateNoteDTO";
 import { validate } from "class-validator";
 

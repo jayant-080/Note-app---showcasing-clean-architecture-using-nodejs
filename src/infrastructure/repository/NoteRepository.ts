@@ -1,5 +1,5 @@
 import { Note, NoteStatus } from "../../domain/entity/Note";
-import { INoteRepository } from "../../domain/entity/repository/INoteRepsitory";
+import { INoteRepository } from "../../domain/repository/INoteRepsitory";
 import { DatabaseError } from "../../utils/Errors/DatabaseError";
 import { NoteModel } from "../database/model/Note";
 
