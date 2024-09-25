@@ -5,17 +5,20 @@ import { PublishNoteUseCase } from "../../application/use_case/PublishNoteUseCas
 import { ArchiveNoteUseCase } from "../../application/use_case/ArchiveNoteUseCase";
 import { FindNoteByIdUseCase } from "../../application/use_case/FindNoteByIdUseCase";
 import { FindAllNoteUseCase } from "../../application/use_case/FindAllNoteUseCase";
+import { inject, injectable } from "inversify";
+import { TYPES } from "../types/types";
 
 
+@injectable()
 export class NoteController{
  
     constructor(
-        private createNoteUseCase:CreateNoteUseCase,
-        private updateNoteUseCase:UpdateNoteUseCase,
-        private publishNoteUseCase:PublishNoteUseCase,
-        private archiveNoteUseCase:ArchiveNoteUseCase,
-        private findByIdUseCase:FindNoteByIdUseCase,
-        private findAllNoteUseCase:FindAllNoteUseCase
+        @inject(TYPES.CreateNoteUseCase) private createNoteUseCase:CreateNoteUseCase,
+        @inject(TYPES.UpdateNoteUseCase) private updateNoteUseCase:UpdateNoteUseCase,
+        @inject(TYPES.PublishNoteUseCase) private publishNoteUseCase:PublishNoteUseCase,
+        @inject(TYPES.ArchiveNoteUSeCase) private archiveNoteUseCase:ArchiveNoteUseCase,
+        @inject(TYPES.FindNoteByIdUseCase) private findByIdUseCase:FindNoteByIdUseCase,
+        @inject(TYPES.FindAllNoteUseCase) private findAllNoteUseCase:FindAllNoteUseCase
 
 
     ){}

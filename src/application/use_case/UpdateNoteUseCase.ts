@@ -4,11 +4,13 @@ import { INoteRepository } from "../../domain/repository/INoteRepsitory";
 import { CreateNoteDTO } from "../dto/CreateNoteDTO";
 import { validate } from "class-validator";
 import { UpdateNoteDTO } from "../dto/UpdateNoteDTO";
+import { inject, injectable } from "inversify";
+import { TYPES } from "../../infrastructure/types/types";
 
-
+@injectable()
 export class UpdateNoteUseCase{
 
-   constructor(private noterepository:INoteRepository){
+   constructor(@inject(TYPES.NoteRepository) private noterepository:INoteRepository){
 
    }
 

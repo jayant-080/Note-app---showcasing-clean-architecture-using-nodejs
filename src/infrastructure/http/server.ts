@@ -1,3 +1,5 @@
+
+import 'reflect-metadata'
 import { ConnectToDB } from "../database/config/mongodb";
 import app from "./app";
 

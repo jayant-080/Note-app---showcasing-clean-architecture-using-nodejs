@@ -7,22 +7,27 @@ import { PublishNoteUseCase } from '../../application/use_case/PublishNoteUseCas
 import { ArchiveNoteUseCase } from '../../application/use_case/ArchiveNoteUseCase'
 import { FindNoteByIdUseCase } from '../../application/use_case/FindNoteByIdUseCase'
 import { FindAllNoteUseCase } from '../../application/use_case/FindAllNoteUseCase'
+import { container } from '../container/infersify.container'
+import { TYPES } from '../types/types'
 
 const noteRoute = express.Router()
 
 
-const noteRepository = new NoteReposiotory()
-const createNoteUseCase = new CreateNoteUseCase(noteRepository)
-const updateNoteUseCase = new UpdateNoteUseCase(noteRepository)
-const publishNoteUseCase = new PublishNoteUseCase(noteRepository)
-const archiveNoteUseCase = new ArchiveNoteUseCase(noteRepository)
-const findByIdUseCase = new FindNoteByIdUseCase(noteRepository)
-const findAllNoteUseCase = new FindAllNoteUseCase(noteRepository)
+// const noteRepository = new NoteReposiotory()
+// const createNoteUseCase = new CreateNoteUseCase(noteRepository)
+// const updateNoteUseCase = new UpdateNoteUseCase(noteRepository)
+// const publishNoteUseCase = new PublishNoteUseCase(noteRepository)
+// const archiveNoteUseCase = new ArchiveNoteUseCase(noteRepository)
+// const findByIdUseCase = new FindNoteByIdUseCase(noteRepository)
+// const findAllNoteUseCase = new FindAllNoteUseCase(noteRepository)
 
 
-const noteController = new NoteController(
-    createNoteUseCase,updateNoteUseCase,
-    publishNoteUseCase,archiveNoteUseCase,findByIdUseCase,findAllNoteUseCase)
+// const noteController = new NoteController(
+//     createNoteUseCase,updateNoteUseCase,
+//     publishNoteUseCase,archiveNoteUseCase,findByIdUseCase,findAllNoteUseCase)
+
+
+ const noteController = container.get<NoteController>(TYPES.NoteController)   
 
 
 noteRoute.post('/create',noteController.createNote.bind(noteController))

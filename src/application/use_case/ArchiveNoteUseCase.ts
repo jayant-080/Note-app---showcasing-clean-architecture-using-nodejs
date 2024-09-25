@@ -6,11 +6,14 @@ import { validate } from "class-validator";
 import { UpdateNoteDTO } from "../dto/UpdateNoteDTO";
 import { PublishNoteDTO } from "../dto/PublishNoteDTO";
 import { ArchiveNoteDTO } from "../dto/ArchiveNoteDTO";
+import { inject, injectable } from "inversify";
+import { TYPES } from "../../infrastructure/types/types";
 
 
+@injectable()
 export class ArchiveNoteUseCase{
 
-   constructor(private noterepository:INoteRepository){
+   constructor(@inject(TYPES.NoteRepository)private noterepository:INoteRepository){
 
    }
 

@@ -1,9 +1,11 @@
+import { injectable } from "inversify";
 import { Note, NoteStatus } from "../../domain/entity/Note";
 import { INoteRepository } from "../../domain/repository/INoteRepsitory";
 import { DatabaseError } from "../../utils/Errors/DatabaseError";
 import { NoteModel } from "../database/model/Note";
 
 
+@injectable()
 export class NoteReposiotory implements INoteRepository {
     async create(note: Note): Promise<Note> {
 
